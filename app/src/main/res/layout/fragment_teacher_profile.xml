@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Constraintlayouttp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".teacher_profileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/profileName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/ivTeachProfile"
+            app:layout_constraintStart_toStartOf="@+id/ivTeachProfile"
+            app:layout_constraintTop_toBottomOf="@+id/ivTeachProfile" />
+
+        <Button
+            android:id="@+id/btnSave2"
+            android:layout_width="205dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="36dp"
+            android:text="Save Changes"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/newpassword2"
+            app:layout_constraintStart_toStartOf="@+id/newpassword2"
+            app:layout_constraintTop_toBottomOf="@+id/newpassword2" />
+
+        <EditText
+            android:id="@+id/updateEmail2"
+            android:layout_width="271dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="58dp"
+            android:ems="10"
+            android:hint="New Email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="@+id/ivTeachProfile"
+            app:layout_constraintStart_toStartOf="@+id/ivTeachProfile"
+            app:layout_constraintTop_toBottomOf="@+id/ivTeachProfile" />
+
+        <EditText
+            android:id="@+id/oldpassword2"
+            android:layout_width="271dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="Old Password"
+            android:inputType="none|textPassword"
+            app:layout_constraintEnd_toEndOf="@+id/updateEmail2"
+            app:layout_constraintStart_toStartOf="@+id/updateEmail2"
+            app:layout_constraintTop_toBottomOf="@+id/updateEmail2" />
+
+        <EditText
+            android:id="@+id/newpassword2"
+            android:layout_width="271dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="New Password"
+            android:inputType="none|textPassword"
+            app:layout_constraintEnd_toEndOf="@+id/oldpassword2"
+            app:layout_constraintStart_toStartOf="@+id/oldpassword2"
+            app:layout_constraintTop_toBottomOf="@+id/oldpassword2" />
+
+        <TextView
+            android:id="@+id/tvProfile2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Profile"
+            android:textColor="#000000"
+            android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivTeachProfile"
+            android:layout_width="108dp"
+            android:layout_height="92dp"
+            android:layout_marginTop="31dp"
+            android:src="@mipmap/ic_launcher_round"
+            app:layout_constraintEnd_toEndOf="@+id/tvProfile2"
+            app:layout_constraintStart_toStartOf="@+id/tvProfile2"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfile2"
+            app:srcCompat="@drawable/profile_pic" />
+
+        <TextView
+            android:id="@+id/logoutTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Logout"
+            android:textColor="#FF0000"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/btnSave2"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="@+id/btnSave2"
+            app:layout_constraintTop_toBottomOf="@+id/btnSave2" />
+
+        <androidx.cardview.widget.CardView
+            app:layout_constraintTop_toBottomOf="@+id/logoutTV"
+            android:layout_width="match_parent"
+            android:layout_height="140dp">
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

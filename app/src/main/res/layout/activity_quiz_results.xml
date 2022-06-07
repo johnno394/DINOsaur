@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizResultsActivity">
+
+    <TextView
+        android:id="@+id/resutlsTV"
+        android:layout_width="320dp"
+        android:layout_height="106dp"
+        android:text="It looks like you aren't feeling too happy"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.179" />
+
+    <TextView
+        android:id="@+id/adviceTV"
+        android:layout_width="320dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="28dp"
+        android:text="Try having a chat with your teacher"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/resutlsTV"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/resutlsTV"
+        app:layout_constraintTop_toBottomOf="@+id/resultsImage" />
+
+    <Button
+        android:id="@+id/backHomeBtn"
+        android:layout_width="244dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/rounded_corners"
+        android:text="BACK HOME"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adviceTV" />
+
+    <ImageView
+        android:id="@+id/resultsImage"
+        android:layout_width="208dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/resutlsTV"
+        app:layout_constraintStart_toStartOf="@+id/resutlsTV"
+        app:layout_constraintTop_toBottomOf="@+id/resutlsTV"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+</androidx.constraintlayout.widget.ConstraintLayout>
