@@ -54,6 +54,7 @@ public class student_HomeFragment extends Fragment {
     Integer startingScore, currentLevel;
     TextView tvTitle, tvLevel;
 
+    // Test
     // Recent log elements
     TextView rlEmojiState, rlTimeDay, rlTimeDate, rlTimeTime, rlComments, rlEmoInt;
     ImageView rlEmoji;
