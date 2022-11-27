@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -33,7 +30,7 @@ public class student_PlaceholderFragment extends Fragment {
     String moodToday;
     Integer startingScore, currentScore;
     TextView question, quizDesc;
-    List<MoodQuestion> moodQuestionsList = new ArrayList<>();
+    List<Model_MoodQuestion> moodQuestionsList = new ArrayList<>();
     Integer currentQuestionPosition = 0;
     ImageView quizHomeImage, backBtn;
 
@@ -102,7 +99,7 @@ public class student_PlaceholderFragment extends Fragment {
         });
 
 
-        moodQuestionsList = MoodQuestion.getMoodQuestions();
+        moodQuestionsList = Model_MoodQuestion.getMoodQuestions();
 
         startQuizBtn.setOnClickListener(new View.OnClickListener() {
             @Override
