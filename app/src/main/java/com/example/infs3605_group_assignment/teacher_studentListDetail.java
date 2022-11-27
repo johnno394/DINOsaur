@@ -34,7 +34,7 @@ public class teacher_studentListDetail extends AppCompatActivity {
     String studentUid;
 
     RecyclerView recyclerView;
-    ArrayList<WellbeingModel> mList;
+    ArrayList<Model_WellbeingEntry> mList;
     studentEntryLogAdapter mAdapter;
     CardView toGraphBtn, emailBtn;
     TextView detailDesc;
@@ -62,7 +62,7 @@ public class teacher_studentListDetail extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mList = new ArrayList<WellbeingModel>();
+        mList = new ArrayList<Model_WellbeingEntry>();
 
 
         db = FirebaseFirestore.getInstance();
@@ -175,7 +175,7 @@ public class teacher_studentListDetail extends AppCompatActivity {
 
                         for (DocumentChange dc :value.getDocumentChanges()) {
                             if (dc.getType() == DocumentChange.Type.ADDED) {
-                                mList.add(dc.getDocument().toObject(WellbeingModel.class));
+                                mList.add(dc.getDocument().toObject(Model_WellbeingEntry.class));
                             }
                             mAdapter.notifyDataSetChanged();
                             if (progressDialog.isShowing()) {

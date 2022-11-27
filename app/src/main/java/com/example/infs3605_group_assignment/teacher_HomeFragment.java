@@ -2,7 +2,6 @@ package com.example.infs3605_group_assignment;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,14 +17,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.anychart.APIlib;
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
@@ -39,7 +34,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -49,7 +43,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -65,12 +58,12 @@ public class teacher_HomeFragment extends Fragment {
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
     DocumentReference docRef = db.collection("Users").document(fAuth.getCurrentUser().getUid());
 
-    List<StudentModel> sGraphList = new ArrayList<StudentModel>();
+    List<Model_Student> sGraphList = new ArrayList<Model_Student>();
 
     AnyChartView anyChartView;
 
     RecyclerView sRecyclerView;
-    ArrayList<StudentModel> sCommentsList;
+    ArrayList<Model_Student> sCommentsList;
     teacherHomeCommentsAdapter sAdapter;
 
 
@@ -117,7 +110,7 @@ public class teacher_HomeFragment extends Fragment {
 
 
                             if(!d.get("latest_emotional_rating").toString().equals("0")) {
-                                sGraphList.add(d.toObject(StudentModel.class));
+                                sGraphList.add(d.toObject(Model_Student.class));
                                 Log.d(TAG, "Adding ");
                                 Log.d(TAG, d.get("FirstName").toString());
                                 Log.d(TAG, d.get("LastName").toString());
@@ -151,7 +144,7 @@ public class teacher_HomeFragment extends Fragment {
 
                         List<DataEntry> seriesData = new ArrayList<>();
 
-                        for (StudentModel sm : sGraphList) {
+                        for (Model_Student sm : sGraphList) {
 
                             seriesData.add(new QuadrantDataEntry(sm.getLatest_emotional_rating(), sm.getLatest_intensity_of_emotion(), sm.getFirstName()));
                             Log.d(TAG, "Added another entry");
@@ -274,7 +267,7 @@ public class teacher_HomeFragment extends Fragment {
 
 
         db = FirebaseFirestore.getInstance();
-        sCommentsList = new ArrayList<StudentModel>();
+        sCommentsList = new ArrayList<Model_Student>();
         sAdapter = new teacherHomeCommentsAdapter(teacher_HomeFragment.this.getContext(),sCommentsList);
 
         sAdapter.setOnCommentClickListener(new teacherHomeCommentsAdapter.OnCommentClickListener() {
@@ -331,9 +324,9 @@ public class teacher_HomeFragment extends Fragment {
                         for (DocumentChange dc :value.getDocumentChanges()) {
 
                             // Run check to make sure user has not just regoed (has not submitted a mood entry yet
-                            if(dc.getDocument().toObject(StudentModel.class).getLatest_emotional_rating() != 0) {
+                            if(dc.getDocument().toObject(Model_Student.class).getLatest_emotional_rating() != 0) {
                                 if (dc.getType() == DocumentChange.Type.ADDED) {
-                                    sCommentsList.add(dc.getDocument().toObject(StudentModel.class));
+                                    sCommentsList.add(dc.getDocument().toObject(Model_Student.class));
                                 }
                             }
 
@@ -514,7 +507,7 @@ public class teacher_HomeFragment extends Fragment {
     /*
                         List<DataEntry> seriesData = new ArrayList<>();
 
-                        for (StudentModel sm : sGraphList) {
+                        for (Model_Student sm : sGraphList) {
 
                             Timestamp t = sm.getLatest_Timestamp();
                             SimpleDateFormat formatter = new SimpleDateFormat("ddMMM HH:mm:ss");

@@ -24,7 +24,7 @@ import java.util.List;
 public class teacherCustomQuestionsAdapter extends RecyclerView.Adapter<teacherCustomQuestionsAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<CustomQuestionModel> mList;
+    ArrayList<Model_CustomQuestion> mList;
     public static final String TAG = "CustomQuestionAdapter";
     private OnItemClickListener mListener;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -37,7 +37,7 @@ public class teacherCustomQuestionsAdapter extends RecyclerView.Adapter<teacherC
         mListener = listener;
     }
 
-    public teacherCustomQuestionsAdapter(Context context, ArrayList<CustomQuestionModel> mList) {
+    public teacherCustomQuestionsAdapter(Context context, ArrayList<Model_CustomQuestion> mList) {
         this.context = context;
         this.mList = mList;
     }
@@ -54,7 +54,7 @@ public class teacherCustomQuestionsAdapter extends RecyclerView.Adapter<teacherC
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        CustomQuestionModel cModel = mList.get(position);
+        Model_CustomQuestion cModel = mList.get(position);
 
         holder.question.setText(cModel.getQuestion().toString());
         holder.shortTitle.setText(cModel.getShort_Title().toString());

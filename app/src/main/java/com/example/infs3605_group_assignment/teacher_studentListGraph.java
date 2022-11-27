@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -43,7 +42,7 @@ import java.util.List;
 public class teacher_studentListGraph extends AppCompatActivity {
 
     public static final String TAG = "teacher_studentGraph";
-    List<WellbeingModel> mList = new ArrayList<WellbeingModel>();
+    List<Model_WellbeingEntry> mList = new ArrayList<Model_WellbeingEntry>();
 
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -97,7 +96,7 @@ public class teacher_studentListGraph extends AppCompatActivity {
 
 
                         for (DocumentSnapshot ds : q) {
-                            mList.add(ds.toObject(WellbeingModel.class));
+                            mList.add(ds.toObject(Model_WellbeingEntry.class));
                             Log.d(TAG, "Adding ");
                         }
 
@@ -146,7 +145,7 @@ public class teacher_studentListGraph extends AppCompatActivity {
 
 
                         Log.d(TAG, "Accessing list of size: " + mList.size());
-                        for (WellbeingModel wm : mList) {
+                        for (Model_WellbeingEntry wm : mList) {
                             Timestamp t = wm.getTimestamp();
 
                             SimpleDateFormat formatter = new SimpleDateFormat("ddMMM HH:mm:ss");

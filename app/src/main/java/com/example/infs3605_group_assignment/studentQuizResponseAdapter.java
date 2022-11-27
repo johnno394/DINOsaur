@@ -1,7 +1,6 @@
 package com.example.infs3605_group_assignment;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,14 +26,14 @@ public class studentQuizResponseAdapter extends RecyclerView.Adapter<studentQuiz
     public static final String TAG = "Responses adapter";
 
     Context context;
-    ArrayList<StudentCustomQuestionAnswerModel> mList;
+    ArrayList<Model_CustomAnswers> mList;
 
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
 
-    public studentQuizResponseAdapter(Context context, ArrayList<StudentCustomQuestionAnswerModel> mList) {
+    public studentQuizResponseAdapter(Context context, ArrayList<Model_CustomAnswers> mList) {
         this.context = context;
         this.mList = mList;
     }
@@ -52,7 +51,7 @@ public class studentQuizResponseAdapter extends RecyclerView.Adapter<studentQuiz
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        StudentCustomQuestionAnswerModel cqModel = mList.get(position);
+        Model_CustomAnswers cqModel = mList.get(position);
         holder.studentAnswer.setText(cqModel.getStudent_Answer());
 
         Date d = cqModel.getSubmission_Time().toDate();
@@ -73,7 +72,7 @@ public class studentQuizResponseAdapter extends RecyclerView.Adapter<studentQuiz
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        StudentModel sModel = documentSnapshot.toObject(StudentModel.class);
+                        Model_Student sModel = documentSnapshot.toObject(Model_Student.class);
                         holder.sFName.setText(sModel.getFirstName());
                         holder.sLName.setText(sModel.getLastName());
                     }

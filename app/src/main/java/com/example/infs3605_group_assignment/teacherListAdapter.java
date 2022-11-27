@@ -15,13 +15,13 @@ import java.util.ArrayList;
 public class teacherListAdapter extends RecyclerView.Adapter<teacherListAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<StudentModel> listArray;
+    ArrayList<Model_Student> listArray;
     public static final String TAG = "studentListAdapter";
 
     private studentListAdapter.onItemClickListener mListener;
 
 
-    public teacherListAdapter(Context context, ArrayList<StudentModel> listArray) {
+    public teacherListAdapter(Context context, ArrayList<Model_Student> listArray) {
         this.context = context;
         this.listArray = listArray;
     }
@@ -36,7 +36,7 @@ public class teacherListAdapter extends RecyclerView.Adapter<teacherListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull teacherListAdapter.MyViewHolder holder, int position) {
-        StudentModel sModel = listArray.get(position);
+        Model_Student sModel = listArray.get(position);
         holder.studentName.setText(sModel.getFirstName() + " " + sModel.getLastName());
         holder.studentImage.setImageDrawable(context.getResources().getDrawable(R.drawable.profile_pic));
 

@@ -1,7 +1,6 @@
 package com.example.infs3605_group_assignment;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -15,7 +14,6 @@ import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.charts.Cartesian;
-import com.anychart.charts.Pie;
 import com.anychart.core.cartesian.series.Line;
 import com.anychart.data.Mapping;
 import com.anychart.data.Set;
@@ -29,17 +27,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class studentGraphActivity extends AppCompatActivity {
@@ -48,7 +42,7 @@ public class studentGraphActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
     public static final String TAG = "studentGraphActivity";
-    List<WellbeingModel> mList = new ArrayList<WellbeingModel>();
+    List<Model_WellbeingEntry> mList = new ArrayList<Model_WellbeingEntry>();
 
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -82,7 +76,7 @@ public class studentGraphActivity extends AppCompatActivity {
 
 
                         for (DocumentSnapshot ds : q) {
-                            mList.add(ds.toObject(WellbeingModel.class));
+                            mList.add(ds.toObject(Model_WellbeingEntry.class));
                             Log.d(TAG, "Adding ");
                         }
 
@@ -130,7 +124,7 @@ public class studentGraphActivity extends AppCompatActivity {
                         List<DataEntry> seriesData = new ArrayList<>();
 
                         Log.d(TAG, "Accessing list of size: " + mList.size());
-                        for (WellbeingModel wm : mList) {
+                        for (Model_WellbeingEntry wm : mList) {
                             Timestamp t = wm.getTimestamp();
 
                             SimpleDateFormat formatter = new SimpleDateFormat("ddMMM HH:mm:ss");

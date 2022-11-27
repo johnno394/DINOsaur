@@ -1,7 +1,6 @@
 package com.example.infs3605_group_assignment;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.Timestamp;
 
-import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -22,7 +19,7 @@ public class teacherHomeCommentsAdapter extends RecyclerView.Adapter<teacherHome
 
 
     Context context;
-    ArrayList<StudentModel> commentsList;
+    ArrayList<Model_Student> commentsList;
     public static final String TAG = "t home comments class";
     private OnCommentClickListener mListener;
 
@@ -35,7 +32,7 @@ public class teacherHomeCommentsAdapter extends RecyclerView.Adapter<teacherHome
         mListener = listener;
     }
 
-    public teacherHomeCommentsAdapter(Context context, ArrayList<StudentModel> commentsList) {
+    public teacherHomeCommentsAdapter(Context context, ArrayList<Model_Student> commentsList) {
         this.context = context;
         this.commentsList = commentsList;
     }
@@ -53,7 +50,7 @@ public class teacherHomeCommentsAdapter extends RecyclerView.Adapter<teacherHome
     @Override
     public void onBindViewHolder(@NonNull teacherHomeCommentsAdapter.MyViewHolder holder, int position) {
 
-        StudentModel sModel = commentsList.get(position);
+        Model_Student sModel = commentsList.get(position);
         holder.uComment.setText(sModel.getLatest_additional_comments());
         holder.uName.setText("-" + sModel.getFirstName() + " " + sModel.getLastName());
 

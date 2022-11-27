@@ -4,7 +4,7 @@ import com.google.firebase.Timestamp;
 
 import java.util.List;
 
-public class StudentModel {
+public class Model_Student {
 
     String FirstName, LastName, Email, isTeacher, UID;
     Timestamp latest_Timestamp;
@@ -13,7 +13,7 @@ public class StudentModel {
     int MoodProgress;
 
 
-    public StudentModel(String firstName, String lastName, String email,String UID, String isTeacher, Timestamp latest_Timestamp, String latest_additional_comments, Long latest_emotional_rating, Long latest_intensity_of_emotion, int moodProgress) {
+    public Model_Student(String firstName, String lastName, String email, String UID, String isTeacher, Timestamp latest_Timestamp, String latest_additional_comments, Long latest_emotional_rating, Long latest_intensity_of_emotion, int moodProgress) {
         FirstName = firstName;
         LastName = lastName;
         Email = email;
@@ -26,7 +26,7 @@ public class StudentModel {
         MoodProgress = moodProgress;
     }
 
-    public StudentModel() {
+    public Model_Student() {
     }
 
     public String getFirstName() {

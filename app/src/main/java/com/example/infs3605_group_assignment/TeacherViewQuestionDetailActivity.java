@@ -16,23 +16,16 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class TeacherViewQuestionDetailActivity extends AppCompatActivity {
 
@@ -44,7 +37,7 @@ public class TeacherViewQuestionDetailActivity extends AppCompatActivity {
     CardView editBtn;
 
     RecyclerView qdRecyclerView;
-    ArrayList<StudentCustomQuestionAnswerModel> qdList;
+    ArrayList<Model_CustomAnswers> qdList;
     studentQuizResponseAdapter qdAdapter;
 
 
@@ -81,7 +74,7 @@ public class TeacherViewQuestionDetailActivity extends AppCompatActivity {
         });
 
 
-        qdList = new ArrayList<StudentCustomQuestionAnswerModel>();
+        qdList = new ArrayList<Model_CustomAnswers>();
         qdAdapter = new studentQuizResponseAdapter(getApplicationContext(),qdList);
 
         // Link recyclerview
@@ -134,8 +127,8 @@ public class TeacherViewQuestionDetailActivity extends AppCompatActivity {
                         for (DocumentChange dc :value.getDocumentChanges()) {
                             if (dc.getType() == DocumentChange.Type.ADDED) {
 
-                                StudentCustomQuestionAnswerModel cqm = dc.getDocument().toObject(StudentCustomQuestionAnswerModel.class);
-                                qdList.add(dc.getDocument().toObject(StudentCustomQuestionAnswerModel.class));
+                                Model_CustomAnswers cqm = dc.getDocument().toObject(Model_CustomAnswers.class);
+                                qdList.add(dc.getDocument().toObject(Model_CustomAnswers.class));
 
                             }
                             qdAdapter.notifyDataSetChanged();
@@ -166,7 +159,7 @@ public class TeacherViewQuestionDetailActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        CustomQuestionModel c = documentSnapshot.toObject(CustomQuestionModel.class);
+                        Model_CustomQuestion c = documentSnapshot.toObject(Model_CustomQuestion.class);
 
                         SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd, yyyy");
                         datePosted.setText("Posted " + sdf.format(c.getPost_Date().toDate()));

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,12 +14,12 @@ import java.util.ArrayList;
 public class studentListAdapter extends RecyclerView.Adapter<studentListAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<StudentModel> listArray;
+    ArrayList<Model_Student> listArray;
     public static final String TAG = "studentListAdapter";
 
     private onItemClickListener mListener;
 
-    public studentListAdapter(Context context, ArrayList<StudentModel> listArray) {
+    public studentListAdapter(Context context, ArrayList<Model_Student> listArray) {
         this.context = context;
         this.listArray = listArray;
     }
@@ -37,7 +36,7 @@ public class studentListAdapter extends RecyclerView.Adapter<studentListAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        StudentModel sModel = listArray.get(position);
+        Model_Student sModel = listArray.get(position);
         holder.tvFullName.setText(sModel.getFirstName() + " " + sModel.getLastName());
 
 

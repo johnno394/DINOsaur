@@ -1,6 +1,5 @@
 package com.example.infs3605_group_assignment;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -21,7 +19,6 @@ import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -30,9 +27,9 @@ public class teacher_studentListFragment extends Fragment {
 
 
     RecyclerView rv;
-    ArrayList<StudentModel> mListTeacher;
+    ArrayList<Model_Student> mListTeacher;
     teacherListAdapter mAdapter;
-    StudentModel student;
+    Model_Student student;
 
 
     FirebaseFirestore db;
@@ -63,7 +60,7 @@ public class teacher_studentListFragment extends Fragment {
         rv.setLayoutManager(new GridLayoutManager(this.getContext(), 3));
 
         db = FirebaseFirestore.getInstance();
-        mListTeacher = new ArrayList<StudentModel>();
+        mListTeacher = new ArrayList<Model_Student>();
         //posible issue
         mAdapter = new teacherListAdapter(teacher_studentListFragment.this.getContext(), mListTeacher);
 
@@ -111,8 +108,8 @@ public class teacher_studentListFragment extends Fragment {
                         }
                         for (DocumentChange dc : value.getDocumentChanges()) {
                             if (dc.getType() == DocumentChange.Type.ADDED) {
-                                mListTeacher.add(dc.getDocument().toObject(StudentModel.class));
-                                Log.d(TAG, dc.getDocument().toObject(StudentModel.class).getFirstName());
+                                mListTeacher.add(dc.getDocument().toObject(Model_Student.class));
+                                Log.d(TAG, dc.getDocument().toObject(Model_Student.class).getFirstName());
                                 Log.d(TAG, "Contains: " + mListTeacher.size());
                             }
                             mAdapter.notifyDataSetChanged();

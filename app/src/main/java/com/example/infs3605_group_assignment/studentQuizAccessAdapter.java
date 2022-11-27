@@ -1,13 +1,11 @@
 package com.example.infs3605_group_assignment;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,20 +16,16 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class studentQuizAccessAdapter extends RecyclerView.Adapter<studentQuizAccessAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<CustomQuestionModel> mList;
+    ArrayList<Model_CustomQuestion> mList;
     public static final String TAG = "studQuizAccessAdapter";
     private OnQuizItemClickListener mListener;
 
@@ -47,7 +41,7 @@ public class studentQuizAccessAdapter extends RecyclerView.Adapter<studentQuizAc
     }
 
 
-    public studentQuizAccessAdapter(Context context, ArrayList<CustomQuestionModel> mList) {
+    public studentQuizAccessAdapter(Context context, ArrayList<Model_CustomQuestion> mList) {
         this.context = context;
         this.mList = mList;
     }
@@ -65,7 +59,7 @@ public class studentQuizAccessAdapter extends RecyclerView.Adapter<studentQuizAc
     @Override
     public void onBindViewHolder(@NonNull studentQuizAccessAdapter.MyViewHolder holder, int position) {
 
-        CustomQuestionModel cModel = mList.get(position);
+        Model_CustomQuestion cModel = mList.get(position);
         holder.qShortTitle.setText(cModel.getShort_Title());
 
         Date d = cModel.getPost_Date().toDate();
@@ -86,7 +80,7 @@ public class studentQuizAccessAdapter extends RecyclerView.Adapter<studentQuizAc
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
 
                         if (documentSnapshot.exists()) {
-                            StudentCustomQuestionAnswerModel sModel = documentSnapshot.toObject(StudentCustomQuestionAnswerModel.class);
+                            Model_CustomAnswers sModel = documentSnapshot.toObject(Model_CustomAnswers.class);
                             Boolean entryExists = sModel.getHas_Submitted();
 
                             if (entryExists) {

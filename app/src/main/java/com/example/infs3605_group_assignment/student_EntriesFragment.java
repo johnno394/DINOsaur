@@ -32,7 +32,7 @@ public class student_EntriesFragment extends Fragment {
 
 
     RecyclerView recyclerView;
-    ArrayList<WellbeingModel> mList;
+    ArrayList<Model_WellbeingEntry> mList;
     studentEntryLogAdapter mAdapter;
 
     ProgressDialog progressDialog;
@@ -66,7 +66,7 @@ public class student_EntriesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         db = FirebaseFirestore.getInstance();
-        mList = new ArrayList<WellbeingModel>();
+        mList = new ArrayList<Model_WellbeingEntry>();
         //posible issue
         mAdapter = new studentEntryLogAdapter(student_EntriesFragment.this.getContext(),mList);
 
@@ -121,7 +121,7 @@ public class student_EntriesFragment extends Fragment {
 
                         for (DocumentChange dc :value.getDocumentChanges()) {
                             if (dc.getType() == DocumentChange.Type.ADDED) {
-                                mList.add(dc.getDocument().toObject(WellbeingModel.class));
+                                mList.add(dc.getDocument().toObject(Model_WellbeingEntry.class));
                             }
                             mAdapter.notifyDataSetChanged();
                             if (progressDialog.isShowing()) {

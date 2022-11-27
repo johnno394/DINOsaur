@@ -1,8 +1,6 @@
 package com.example.infs3605_group_assignment;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +19,10 @@ import java.util.Date;
 public class studentEntryLogAdapter extends RecyclerView.Adapter<studentEntryLogAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<WellbeingModel> logsArrayList;
+    ArrayList<Model_WellbeingEntry> logsArrayList;
     public static final String TAG = "student Adapter class";
 
-    public studentEntryLogAdapter(Context context, ArrayList<WellbeingModel> logsArrayList) {
+    public studentEntryLogAdapter(Context context, ArrayList<Model_WellbeingEntry> logsArrayList) {
         this.context = context;
         this.logsArrayList = logsArrayList;
     }
@@ -43,7 +41,7 @@ public class studentEntryLogAdapter extends RecyclerView.Adapter<studentEntryLog
     @Override
     public void onBindViewHolder(@NonNull studentEntryLogAdapter.MyViewHolder holder, int position) {
 
-        WellbeingModel wModel = logsArrayList.get(position);
+        Model_WellbeingEntry wModel = logsArrayList.get(position);
 
         //set emoji
         int emoRating = wModel.getEmotional_rating().intValue();

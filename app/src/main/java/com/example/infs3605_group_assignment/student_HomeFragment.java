@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +21,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -38,9 +35,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -61,7 +56,7 @@ public class student_HomeFragment extends Fragment {
 
 
     RecyclerView shRecyclerView;
-    ArrayList<CustomQuestionModel> shList;
+    ArrayList<Model_CustomQuestion> shList;
     studentQuizAccessAdapter shAdapter;
 
 
@@ -134,7 +129,7 @@ public class student_HomeFragment extends Fragment {
         shRecyclerView = view.findViewById(R.id.sd_recyclerView);
         shRecyclerView.setHasFixedSize(true);
         shRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL,true));
-        shList = new ArrayList<CustomQuestionModel>();
+        shList = new ArrayList<Model_CustomQuestion>();
         shAdapter = new studentQuizAccessAdapter(student_HomeFragment.this.getContext(),shList);
         shRecyclerView.setAdapter(shAdapter);
         QuestionEventChangeListener();
@@ -167,9 +162,9 @@ public class student_HomeFragment extends Fragment {
 
                                     // If student submission has been received
                                 } else {
-                                    List<StudentCustomQuestionAnswerModel> studentAnswers = queryDocumentSnapshots.toObjects(StudentCustomQuestionAnswerModel.class);
+                                    List<Model_CustomAnswers> studentAnswers = queryDocumentSnapshots.toObjects(Model_CustomAnswers.class);
 
-                                    for (StudentCustomQuestionAnswerModel s : studentAnswers) {
+                                    for (Model_CustomAnswers s : studentAnswers) {
                                         // Loop through student submissions to find matching studentID
                                         if (s.getStudent_ID().equals(fAuth.getCurrentUser().getUid())) {
                                             Toast.makeText(getActivity(), "Looks like you have already done this quiz!", Toast.LENGTH_LONG).show();
@@ -233,13 +228,13 @@ public class student_HomeFragment extends Fragment {
                         for (DocumentChange dc :value.getDocumentChanges()) {
                             if (dc.getType() == DocumentChange.Type.ADDED) {
 
-                                CustomQuestionModel cqm = dc.getDocument().toObject(CustomQuestionModel.class);
+                                Model_CustomQuestion cqm = dc.getDocument().toObject(Model_CustomQuestion.class);
 
                                 Date expiryDate = cqm.getFinish_Date().toDate();
                                 Date currentDate = Timestamp.now().toDate();
 
                                 if (expiryDate.after(currentDate)) {
-                                    shList.add(dc.getDocument().toObject(CustomQuestionModel.class));
+                                    shList.add(dc.getDocument().toObject(Model_CustomQuestion.class));
                                 }
                             }
                             shAdapter.notifyDataSetChanged();

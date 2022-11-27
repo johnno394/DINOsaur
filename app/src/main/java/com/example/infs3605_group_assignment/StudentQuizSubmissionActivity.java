@@ -15,12 +15,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -127,7 +124,7 @@ public class StudentQuizSubmissionActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-                        CustomQuestionModel c = documentSnapshot.toObject(CustomQuestionModel.class);
+                        Model_CustomQuestion c = documentSnapshot.toObject(Model_CustomQuestion.class);
                         questionTitle.setText(c.getQuestion());
 
                     }

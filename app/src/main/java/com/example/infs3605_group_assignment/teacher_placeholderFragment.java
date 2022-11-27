@@ -33,7 +33,7 @@ public class teacher_placeholderFragment extends Fragment {
 
     CardView btnCreateQuestion;
     static RecyclerView mRecyclerView;
-    ArrayList<CustomQuestionModel> mList;
+    ArrayList<Model_CustomQuestion> mList;
     teacherCustomQuestionsAdapter mAdapter;
 
     FirebaseFirestore db;
@@ -63,7 +63,7 @@ public class teacher_placeholderFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL,true));
 
-        mList = new ArrayList<CustomQuestionModel>();
+        mList = new ArrayList<Model_CustomQuestion>();
         mAdapter = new teacherCustomQuestionsAdapter(teacher_placeholderFragment.this.getContext(),mList);
         mRecyclerView.setAdapter(mAdapter);
         EventChangeListener();
@@ -126,8 +126,8 @@ public class teacher_placeholderFragment extends Fragment {
 
                         for (DocumentChange dc :value.getDocumentChanges()) {
                             if (dc.getType() == DocumentChange.Type.ADDED) {
-                                //mList.add(0, dc.getDocument().toObject(CustomQuestionModel.class));
-                                mList.add(dc.getDocument().toObject(CustomQuestionModel.class));
+                                //mList.add(0, dc.getDocument().toObject(Model_CustomQuestion.class));
+                                mList.add(dc.getDocument().toObject(Model_CustomQuestion.class));
                             }
                             mAdapter.notifyDataSetChanged();
 

@@ -4,7 +4,7 @@ import com.google.firebase.Timestamp;
 
 import java.util.Date;
 
-public class WellbeingModel {
+public class Model_WellbeingEntry {
 
     private String userID;
     private Long emotional_rating;
@@ -12,7 +12,7 @@ public class WellbeingModel {
     private String additional_comments;
     private Timestamp Timestamp;
 
-    public WellbeingModel(String userID, Long emotional_rating, Long intensity_of_emotion, String additional_comments, com.google.firebase.Timestamp timestamp) {
+    public Model_WellbeingEntry(String userID, Long emotional_rating, Long intensity_of_emotion, String additional_comments, com.google.firebase.Timestamp timestamp) {
         this.userID = userID;
         this.emotional_rating = emotional_rating;
         this.intensity_of_emotion = intensity_of_emotion;
@@ -20,7 +20,7 @@ public class WellbeingModel {
         Timestamp = timestamp;
     }
 
-    private WellbeingModel() {
+    private Model_WellbeingEntry() {
 
     }
 

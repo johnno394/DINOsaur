@@ -2,21 +2,21 @@ package com.example.infs3605_group_assignment;
 
 import com.google.firebase.Timestamp;
 
-public class StudentCustomQuestionAnswerModel {
+public class Model_CustomAnswers {
 
     private String Student_Answer;
     private String Student_ID;
     private Timestamp Submission_Time;
     private Boolean Has_Submitted;
 
-    public StudentCustomQuestionAnswerModel(String student_Answer, String student_ID, Timestamp submission_Time, Boolean has_Submitted) {
+    public Model_CustomAnswers(String student_Answer, String student_ID, Timestamp submission_Time, Boolean has_Submitted) {
         Student_Answer = student_Answer;
         Student_ID = student_ID;
         Submission_Time = submission_Time;
         Has_Submitted = has_Submitted;
     }
 
-    public StudentCustomQuestionAnswerModel() {
+    public Model_CustomAnswers() {
 
     }
 

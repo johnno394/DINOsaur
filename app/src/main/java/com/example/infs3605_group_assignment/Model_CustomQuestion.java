@@ -2,12 +2,12 @@ package com.example.infs3605_group_assignment;
 
 import com.google.firebase.Timestamp;
 
-public class CustomQuestionModel {
+public class Model_CustomQuestion {
 
     private String Short_Title, Question, Teacher_ID;
     private Timestamp Post_Date, Finish_Date;
 
-    public CustomQuestionModel(String short_Title, String question, String teacher_ID, Timestamp post_Date, Timestamp Finish_Date) {
+    public Model_CustomQuestion(String short_Title, String question, String teacher_ID, Timestamp post_Date, Timestamp Finish_Date) {
         Short_Title = short_Title;
         Question = question;
         Teacher_ID = teacher_ID;
@@ -15,7 +15,7 @@ public class CustomQuestionModel {
         this.Finish_Date = Finish_Date;
     }
 
-    public CustomQuestionModel() {
+    public Model_CustomQuestion() {
 
     }
 
